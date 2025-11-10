@@ -10,7 +10,8 @@
 	} from './ContactForm.css'
 </script>
 
-<form class={contactForm} name='contact' data-netlify='true'>
+<form class={contactForm} name='contact' method='POST' data-netlify='true'>
+	<input type='hidden' name='form-name' value='contact' />
 	<div class={formGroup}>
 		<label for='name' class={formLabel}>Name</label>
 		<input type='text' id='name' name='name' class={formInput} required />
