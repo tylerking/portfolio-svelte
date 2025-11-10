@@ -1,4 +1,5 @@
 <script lang='ts'>
+	import { PUBLIC_API_URL } from '$env/static/public'
 	import {
 		chatBotButton,
 		chatBotWindow,
@@ -54,8 +55,7 @@
 		isLoading = true
 
 		try {
-			// Call your Python API (update URL when deployed)
-			const response = await fetch('http://localhost:8000/qa', {
+			const response = await fetch(`${PUBLIC_API_URL}/qa`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -79,7 +79,8 @@
 				}
 			]
 		} catch (error) {
-			console.error('Error:', error)
+			console.error('Chatbot error:', error)
+			console.error('API URL:', PUBLIC_API_URL)
 			messages = [
 				...messages,
 				{
