@@ -10,18 +10,8 @@
 	} from './ContactForm.css'
 </script>
 
-<form
-  class={contactForm}
-  name="contact"
-  method="POST"
-  data-netlify="true"
-  action="/__forms.html"
-  {...({ 'netlify-honeypot': 'bot-field' } as Record<string, string>)}
->
-	<input type='hidden' name='form-name' value='contact' />
-	<input type="hidden" name="redirect" value="/thank-you" />
-  <input type="text" name="bot-field" style="display:none" tabindex="-1" autocomplete="off" />
-
+<form class={contactForm} name='contact-form' method='POST' netlify-honeypot='bot-field' data-netlify='true'>
+  <input type='hidden' name='form-name' value='contact-form' />
 	<div class={formGroup}>
 		<label for='name' class={formLabel}>Name</label>
 		<input type='text' id='name' name='name' class={formInput} required />
