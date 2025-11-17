@@ -8,7 +8,7 @@
 	const navItems = [
 		{ id: 'profile', icon: 'iconoir-profile-circle', label: 'About Me' },
 		{ id: 'projects', icon: 'iconoir-code', label: 'Open Source' },
-		{ id: 'posts', icon: 'iconoir-post', label: 'Blog Posts' },
+		// { id: 'posts', icon: 'iconoir-post', label: 'Blog Posts' },
 		{ id: 'contact', icon: 'iconoir-send-mail', label: 'Contact' }
 	]
 </script>

@@ -1,14 +1,14 @@
 <script lang='ts'>
 	import { section, sectionTitle, sectionContent } from '$lib/styles/layout.css'
 	import ProjectCard from '$lib/components/project/ProjectCard.svelte'
-	import PostCard from '$lib/components/blog/PostCard.svelte'
+	// import PostCard from '$lib/components/blog/PostCard.svelte'
 	import ContactForm from '$lib/components/forms/ContactForm.svelte'
 	import type { PageData } from './$types'
 
 	export let data: PageData
 
 	$: projects = data.projects
-	$: posts = data.posts
+	// $: posts = data.posts
 	$: about = data.about
 </script>
 
@@ -29,14 +29,14 @@
 	</div>
 </section>
 
-<section id='posts' class={section}>
+<!-- <section id='posts' class={section}>
 	<h2 class={sectionTitle}>Blog Posts</h2>
 	<div class={sectionContent}>
 		{#each posts as post}
 			<PostCard {post} />
 		{/each}
 	</div>
-</section>
+</section> -->
 
 <section id='contact' class={section}>
 	<h2 class={sectionTitle}>Contact</h2>
