@@ -28,10 +28,15 @@ export const sidebarContent = style({
 
 export const name = style({
 	color: colors.teal,
+	display: 'block',
 	fontFamily: fonts.heading,
 	fontSize: '3.5rem',
 	fontWeight: typography.fontWeights.bold,
 	marginBottom: spacing[2],
+	textDecoration: 'none',
+	':hover': {
+		opacity: 1
+	},
 	'@media': {
 		[`screen and (max-width: ${breakpoints.mobile})`]: {
 			fontSize: typography.fontSizes['4xl']

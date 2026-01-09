@@ -18,7 +18,7 @@
 	export let personTitle: string
 	export let personSubtitle: string | undefined = undefined
 	export let currentTheme: Theme
-	export let isBlogPost: boolean
+	export let isHomePage: boolean
 	export let activeSection: string
 	export let onThemeToggle: () => void
 	export let onNavigate: (sectionId: string) => void
@@ -32,7 +32,7 @@
 
 <aside class={sidebar}>
 	<div class={sidebarContent}>
-		<h1 class={name}>{personName}</h1>
+		<a href='/' class={name}>{personName}</a>
 		<p class={title}>{personTitle}</p>
 		{#if personSubtitle}
 			<p class={description}>{personSubtitle}</p>
@@ -42,7 +42,7 @@
 			<SocialLinks links={socialLinksData} />
 		</div>
 		<nav class={navigation}>
-			<Navigation {isBlogPost} {activeSection} {onNavigate} />
+			<Navigation {isHomePage} {activeSection} {onNavigate} />
 		</nav>
 	</div>
 </aside>

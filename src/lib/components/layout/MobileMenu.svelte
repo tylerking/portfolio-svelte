@@ -9,7 +9,7 @@
 	import Navigation from './Navigation.svelte'
 
 	export let isOpen: boolean = false
-	export let isBlogPost: boolean = false
+	export let isHomePage: boolean = true
 	export let activeSection: string = 'profile'
 	export let onToggle: () => void
 	export let onNavigate: (sectionId: string) => void
@@ -22,5 +22,5 @@
 </button>
 
 <div class={`${mobileMenu} ${isOpen ? mobileMenuOpen : ''}`}>
-	<Navigation {isBlogPost} {activeSection} {onNavigate} />
+	<Navigation {isHomePage} {activeSection} {onNavigate} />
 </div>

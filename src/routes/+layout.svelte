@@ -16,7 +16,6 @@
 	let activeSection = 'profile'
 	let mobileMenuIsOpen = false
 
-	$: isBlogPost = $page.url.pathname.startsWith('/blog/')
 	$: isHomePage = $page.url.pathname === '/'
 	$: about = data.about
 
@@ -34,7 +33,7 @@
 	}
 
 	function updateActiveSection() {
-		const sections = ['profile', 'projects', 'posts', 'contact']
+		const sections = ['profile', 'approach', 'case-studies', 'projects', 'contact']
 		const scrollPosition = window.scrollY + 100
 
 		for (let i = sections.length - 1; i >= 0; i--) {
@@ -77,7 +76,7 @@
 
 <MobileMenu
 	isOpen={mobileMenuIsOpen}
-	{isBlogPost}
+	{isHomePage}
 	{activeSection}
 	onToggle={toggleMobileMenu}
 	onNavigate={scrollToSection}
@@ -90,7 +89,7 @@
 			personTitle={about.title}
 			personSubtitle={about.subtitle}
 			{currentTheme}
-			{isBlogPost}
+			{isHomePage}
 			{activeSection}
 			onThemeToggle={toggleTheme}
 			onNavigate={scrollToSection}

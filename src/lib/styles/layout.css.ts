@@ -60,5 +60,10 @@ export const sectionTitle = style({
 
 export const sectionContent = style({
 	color: colors.foreground,
-	lineHeight: typography.lineHeights.normal
+	lineHeight: typography.lineHeights.normal,
+	marginBottom: spacing[8]
+})
+
+export const sectionIntro = style({
+	marginBottom: spacing[8]
 })

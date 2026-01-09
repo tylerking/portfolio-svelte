@@ -1,6 +1,6 @@
 import { globalStyle } from '@vanilla-extract/css'
 import { colors, fonts } from './theme.css'
-import { transitions } from './tokens'
+import { transitions, borderRadius } from './tokens'
 
 globalStyle('*', {
 	boxSizing: 'border-box',
@@ -16,7 +16,7 @@ globalStyle('body', {
 	backgroundColor: colors.background,
 	color: colors.foreground,
 	fontFamily: fonts.body,
-	fontSize: '0.875rem',
+	fontSize: '1rem',
 	height: '100%',
 	transition: `background-color ${transitions.normal}, color ${transitions.normal}`
 })
@@ -100,4 +100,63 @@ globalStyle('.code-block code', {
 	fontFamily: 'monospace',
 	fontSize: '0.75rem',
 	lineHeight: '1.6'
+})
+
+// Reusable bordered element style
+globalStyle('.bordered', {
+	border: `2px solid ${colors.border}`,
+	borderRadius: borderRadius.base
+})
+
+// Approach step card styles
+globalStyle('.approach-card', {
+	display: 'flex',
+	alignItems: 'flex-start',
+	gap: '16px',
+	padding: '16px',
+	marginBottom: '12px',
+	position: 'relative'
+})
+
+globalStyle('.approach-icon', {
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+	width: '44px',
+	height: '44px',
+	flexShrink: 0,
+	borderRadius: '10px',
+	backgroundColor: colors.border,
+	color: colors.teal,
+	fontSize: '20px',
+	position: 'relative',
+	zIndex: 1
+})
+
+globalStyle('.approach-card:not(:last-child) .approach-icon::after', {
+	content: '""',
+	position: 'absolute',
+	top: '100%',
+	left: '50%',
+	transform: 'translateX(-50%)',
+	width: '2px',
+	height: 'calc(100% + 12px + 32px)',
+	backgroundColor: colors.border
+})
+
+globalStyle('.approach-content', {
+	flex: 1
+})
+
+globalStyle('.approach-title', {
+	fontSize: '1.125rem',
+	fontWeight: 600,
+	marginBottom: '8px',
+	color: colors.foreground
+})
+
+globalStyle('.approach-description', {
+	color: colors.muted,
+	lineHeight: 1.6,
+	margin: 0
 })
