@@ -32,7 +32,7 @@
 
 <aside class={sidebar}>
 	<div class={sidebarContent}>
-		<a href='/' class={name}>{personName}</a>
+		<h1 class={name}><a href='/'>{personName}</a></h1>
 		<p class={title}>{personTitle}</p>
 		{#if personSubtitle}
 			<p class={description}>{personSubtitle}</p>

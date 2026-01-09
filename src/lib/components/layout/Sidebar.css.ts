@@ -1,6 +1,6 @@
-import { style } from '@vanilla-extract/css'
+import { style, globalStyle } from '@vanilla-extract/css'
 import { colors, fonts } from '$lib/styles/theme.css'
-import { spacing, typography, breakpoints } from '$lib/styles/tokens'
+import { spacing, typography, breakpoints, transitions } from '$lib/styles/tokens'
 
 export const sidebar = style({
 	display: 'flex',
@@ -27,21 +27,25 @@ export const sidebarContent = style({
 })
 
 export const name = style({
-	color: colors.teal,
-	display: 'block',
 	fontFamily: fonts.heading,
 	fontSize: '3.5rem',
 	fontWeight: typography.fontWeights.bold,
 	marginBottom: spacing[2],
-	textDecoration: 'none',
-	':hover': {
-		opacity: 1
-	},
 	'@media': {
 		[`screen and (max-width: ${breakpoints.mobile})`]: {
 			fontSize: typography.fontSizes['4xl']
 		}
 	}
+})
+
+globalStyle(`${name} a`, {
+	color: colors.teal,
+	textDecoration: 'none',
+	transition: `opacity ${transitions.fast}`
+})
+
+globalStyle(`${name} a:hover`, {
+	opacity: 0.8
 })
 
 export const title = style({
