@@ -7,8 +7,6 @@
 	export interface Project {
 		title: string
 		description: string
-		image?: string
-		imageAlt?: string
 		source?: string
 		demo?: string
 		tech?: Technology[]
@@ -18,7 +16,6 @@
 <script lang='ts'>
 	import {
 		projectCard,
-		projectImage,
 		projectContent,
 		projectHeader,
 		projectTitle,
@@ -33,11 +30,6 @@
 </script>
 
 <div class={projectCard}>
-	<img
-		src={project.image || 'https://placehold.co/800x400/1a1a1a/888888?text=No+Image'}
-		alt={project.imageAlt || project.title}
-		class={projectImage}
-	/>
 	<div class={projectContent}>
 		<div class={projectHeader}>
 			{#if project.source}

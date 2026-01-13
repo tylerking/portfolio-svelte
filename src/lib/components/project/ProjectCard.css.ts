@@ -12,25 +12,8 @@ export const projectCard = style({
 	}
 })
 
-export const projectImage = style({
-	border: `2px solid ${colors.border}`,
-	borderRadius: borderRadius.base,
-	display: 'block',
-	flexShrink: 0,
-	height: '140px',
-	objectFit: 'cover',
-	width: '200px'
-})
-
 export const projectContent = style({
-	flex: 1,
-	marginLeft: '20px',
-	'@media': {
-		'screen and (max-width: 768px)': {
-			marginLeft: 0,
-			marginTop: spacing[3]
-		}
-	}
+	flex: 1
 })
 
 export const projectHeader = style({

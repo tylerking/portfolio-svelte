@@ -51,7 +51,6 @@ export const section = style({
 })
 
 export const sectionTitle = style({
-	color: colors.foreground,
 	fontFamily: fonts.heading,
 	fontSize: typography.fontSizes['3xl'],
 	fontWeight: typography.fontWeights.bold,

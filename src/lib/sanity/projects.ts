@@ -1,6 +1,4 @@
 import type { PortableTextBlock } from '@portabletext/types'
-import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
-import imageUrlBuilder from '@sanity/image-url'
 import { client } from './client'
 
 export interface Technology {
@@ -15,8 +13,6 @@ export interface Project {
 	title: string
 	description: string
 	tech: Technology[]
-	image?: string
-	imageAlt?: string
 	demo?: string
 	source?: string
 }
@@ -36,14 +32,6 @@ interface SanityProject {
 	order?: number
 	site?: string
 	source?: string
-	image?: SanityImageSource
-}
-
-// Helper to build image URLs from Sanity
-const builder = imageUrlBuilder(client)
-
-function urlFor(source: SanityImageSource) {
-	return builder.image(source)
 }
 
 // Helper function to convert Sanity Portable Text to plain text
@@ -78,8 +66,7 @@ export async function getProjects(): Promise<Project[]> {
 			},
 			order,
 			site,
-			source,
-			image
+			source
 		}`
 
 		const data = await client.fetch<SanityProject[]>(query)
@@ -88,12 +75,6 @@ export async function getProjects(): Promise<Project[]> {
 			let descriptionText = 'No description available'
 			if (item.description) {
 				descriptionText = portableTextToPlainText(item.description) || 'No description available'
-			}
-
-			// Build image URL if image exists
-			let imageUrl: string | undefined
-			if (item.image) {
-				imageUrl = urlFor(item.image).width(800).url()
 			}
 
 			// Map technologies to include name and description for tooltips
@@ -111,8 +92,6 @@ export async function getProjects(): Promise<Project[]> {
 				title: item.title || 'Untitled Project',
 				description: descriptionText,
 				tech: technologies,
-				image: imageUrl,
-				imageAlt: item.title,
 				demo: item.site,
 				source: item.source
 			}
