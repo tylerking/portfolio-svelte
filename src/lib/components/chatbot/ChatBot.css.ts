@@ -19,7 +19,7 @@ export const chatBotButton = style({
 	right: spacing[6],
 	transition: `all ${transitions.normal}`,
 	width: spacing[16],
-	zIndex: 1000,
+	zIndex: 1100,
 	':hover': {
 		boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2)',
 		transform: 'scale(1.1)'
@@ -40,7 +40,7 @@ export const chatBotWindow = style({
 	transition: `all ${transitions.normal}`,
 	visibility: 'hidden',
 	width: '380px',
-	zIndex: 999,
+	zIndex: 1099,
 	'@media': {
 		'screen and (max-width: 768px)': {
 			bottom: spacing[4],
