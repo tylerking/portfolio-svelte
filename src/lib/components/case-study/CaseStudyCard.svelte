@@ -15,27 +15,30 @@
 
 <script lang='ts'>
 	import {
-		caseStudyCard,
-		caseStudyImage,
-		caseStudyContent,
-		caseStudyTitle,
-		caseStudyExcerpt,
+		card,
+		cardImage,
+		cardContentWithImage,
+		cardHeader,
+		cardTitle,
+		cardDescription,
 		techStack,
 		techTag
-	} from './CaseStudyCard.css'
+	} from '$lib/styles/card.css'
 
 	export let caseStudy: CaseStudy
 </script>
 
-<article class={caseStudyCard}>
+<article class={card}>
 	<img
 		src={caseStudy.thumbnail || 'https://placehold.co/800x400/1a1a1a/888888?text=No+Image'}
 		alt={caseStudy.title}
-		class={caseStudyImage}
+		class={cardImage}
 	/>
-	<div class={caseStudyContent}>
-		<a href='/case-studies/{caseStudy.slug}' class={caseStudyTitle}>{caseStudy.title}</a>
-		<p class={caseStudyExcerpt}>{caseStudy.excerpt}</p>
+	<div class={cardContentWithImage}>
+		<div class={cardHeader}>
+			<a href='/case-studies/{caseStudy.slug}' class={cardTitle}>{caseStudy.title}</a>
+		</div>
+		<p class={cardDescription}>{caseStudy.excerpt}</p>
 		{#if caseStudy.technology && caseStudy.technology.length > 0}
 			<div class={techStack}>
 				{#each caseStudy.technology as tech}

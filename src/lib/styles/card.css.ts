@@ -1,8 +1,9 @@
 import { style } from '@vanilla-extract/css'
-import { colors, fonts } from '$lib/styles/theme.css'
-import { spacing, typography, borderRadius, transitions } from '$lib/styles/tokens'
+import { colors, fonts } from './theme.css'
+import { spacing, typography, borderRadius, transitions } from './tokens'
 
-export const caseStudyCard = style({
+// Shared card container
+export const card = style({
 	display: 'flex',
 	marginBottom: spacing[12],
 	'@media': {
@@ -12,7 +13,8 @@ export const caseStudyCard = style({
 	}
 })
 
-export const caseStudyImage = style({
+// Shared card image
+export const cardImage = style({
 	border: `2px solid ${colors.border}`,
 	borderRadius: borderRadius.base,
 	display: 'block',
@@ -22,7 +24,13 @@ export const caseStudyImage = style({
 	width: '200px'
 })
 
-export const caseStudyContent = style({
+// Shared card content wrapper
+export const cardContent = style({
+	flex: 1
+})
+
+// Shared card content wrapper with image (has left margin)
+export const cardContentWithImage = style({
 	flex: 1,
 	marginLeft: '20px',
 	'@media': {
@@ -33,25 +41,52 @@ export const caseStudyContent = style({
 	}
 })
 
-export const caseStudyTitle = style({
+// Shared card header
+export const cardHeader = style({
+	alignItems: 'center',
+	display: 'flex',
+	justifyContent: 'space-between',
+	marginBottom: spacing[2]
+})
+
+// Shared card title
+export const cardTitle = style({
 	color: colors.foreground,
-	display: 'block',
 	fontFamily: fonts.accent,
 	fontSize: typography.fontSizes.lg,
 	fontWeight: typography.fontWeights.semibold,
-	marginBottom: spacing[2],
-	textDecoration: 'none',
+	margin: 0,
+	textDecoration: 'underline',
+	textDecorationColor: colors.teal,
 	transition: `color ${transitions.fast}`,
 	':hover': {
 		color: colors.teal
 	}
 })
 
-export const caseStudyExcerpt = style({
+// Shared card description
+export const cardDescription = style({
 	lineHeight: typography.lineHeights.normal,
 	marginBottom: spacing[2]
 })
 
+// Shared card actions
+export const cardActions = style({
+	alignItems: 'center',
+	display: 'flex',
+	gap: spacing[3]
+})
+
+export const cardAction = style({
+	color: colors.teal,
+	fontSize: typography.fontSizes.lg,
+	transition: `color ${transitions.fast}`,
+	':hover': {
+		opacity: 0.8
+	}
+})
+
+// Shared tech stack
 export const techStack = style({
 	display: 'flex',
 	flexWrap: 'wrap',

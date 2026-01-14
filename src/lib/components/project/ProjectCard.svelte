@@ -15,39 +15,39 @@
 
 <script lang='ts'>
 	import {
-		projectCard,
-		projectContent,
-		projectHeader,
-		projectTitle,
-		projectActions,
-		projectAction,
-		projectDescription,
+		card,
+		cardContent,
+		cardHeader,
+		cardTitle,
+		cardActions,
+		cardAction,
+		cardDescription,
 		techStack,
 		techTag
-	} from './ProjectCard.css'
+	} from '$lib/styles/card.css'
 
 	export let project: Project
 </script>
 
-<div class={projectCard}>
-	<div class={projectContent}>
-		<div class={projectHeader}>
+<div class={card}>
+	<div class={cardContent}>
+		<div class={cardHeader}>
 			{#if project.source}
-				<a href={project.source} target='_blank' rel='noopener noreferrer' class={projectTitle} title={project.title}>
+				<a href={project.source} target='_blank' rel='noopener noreferrer' class={cardTitle} title={project.title}>
 					{project.title}
 				</a>
 			{:else}
-				<h3 class={projectTitle}>{project.title}</h3>
+				<h3 class={cardTitle}>{project.title}</h3>
 			{/if}
 			{#if project.demo}
-				<div class={projectActions}>
-					<a href={project.demo} target='_blank' rel='noopener noreferrer' class={projectAction} title='View Demo'>
+				<div class={cardActions}>
+					<a href={project.demo} target='_blank' rel='noopener noreferrer' class={cardAction} title='View Demo'>
 						<i class='iconoir-open-in-window'></i>
 					</a>
 				</div>
 			{/if}
 		</div>
-		<p class={projectDescription}>{project.description}</p>
+		<p class={cardDescription}>{project.description}</p>
 		{#if project.tech && project.tech.length > 0}
 			<div class={techStack}>
 				{#each project.tech as tech}
