@@ -65,6 +65,6 @@ export const noteStatusDot = style({
 export const noteStatusDotVariant = styleVariants({
 	experimental: { backgroundColor: '#8B5CF6' },
 	emerging: { backgroundColor: '#F59E0B' },
-	stabilizing: { backgroundColor: '#3B82F6' },
+	stabilizing: { backgroundColor: '#60A5FA' },
 	established: { backgroundColor: '#10B981' }
 })
