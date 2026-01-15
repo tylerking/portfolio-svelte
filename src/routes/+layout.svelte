@@ -33,7 +33,7 @@
 	}
 
 	function updateActiveSection() {
-		const sections = ['profile', 'approach', 'case-studies', 'projects', 'contact']
+		const sections = ['profile', 'approach', 'field-notes', 'case-studies', 'projects', 'contact']
 		const scrollPosition = window.scrollY + 100
 
 		for (let i = sections.length - 1; i >= 0; i--) {

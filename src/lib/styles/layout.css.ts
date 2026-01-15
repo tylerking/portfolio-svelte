@@ -54,7 +54,7 @@ export const sectionTitle = style({
 	fontFamily: fonts.heading,
 	fontSize: typography.fontSizes['3xl'],
 	fontWeight: typography.fontWeights.bold,
-	marginBottom: spacing[6]
+	marginBottom: spacing[4]
 })
 
 export const sectionContent = style({

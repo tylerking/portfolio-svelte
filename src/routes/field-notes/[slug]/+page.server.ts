@@ -1,15 +1,15 @@
 import { error } from '@sveltejs/kit'
-import { getPostBySlug } from '$lib/sanity/posts'
+import { getNoteBySlug } from '$lib/sanity/notes'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ params }) => {
-	const post = await getPostBySlug(params.slug)
+	const note = await getNoteBySlug(params.slug)
 
-	if (!post) {
-		throw error(404, 'Post not found')
+	if (!note) {
+		throw error(404, 'Note not found')
 	}
 
 	return {
-		post
+		note
 	}
 }

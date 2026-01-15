@@ -5,6 +5,10 @@ import { client } from './client'
 export interface Global {
 	title: string
 	description: string
+	fieldNotesOverview: string
+	caseStudiesOverview: string
+	projectsOverview: string
+	contactOverview: string
 }
 
 export interface About {
@@ -43,7 +47,11 @@ export async function getGlobalContent(): Promise<Global> {
 		// GROQ query to fetch the global singleton document
 		const query = `*[_type == "global" && _id == "global"][0]{
 			siteTitle,
-			description
+			description,
+			fieldNotesOverview,
+			caseStudiesOverview,
+			projectsOverview,
+			contactOverview
 		}`
 
 		const data = await client.fetch(query)
@@ -54,14 +62,22 @@ export async function getGlobalContent(): Promise<Global> {
 
 		return {
 			title: data.siteTitle || 'Tyler King',
-			description: data.description || 'Software Engineer & Creative Technologist'
+			description: data.description || 'Software Engineer & Creative Technologist',
+			fieldNotesOverview: data.fieldNotesOverview || '',
+			caseStudiesOverview: data.caseStudiesOverview || '',
+			projectsOverview: data.projectsOverview || '',
+			contactOverview: data.contactOverview || ''
 		}
 	} catch (error) {
 		console.error('Error fetching global content from Sanity:', error)
 
 		return {
 			title: 'Tyler King',
-			description: 'Software Engineer & Creative Technologist'
+			description: 'Software Engineer & Creative Technologist',
+			fieldNotesOverview: '',
+			caseStudiesOverview: '',
+			projectsOverview: '',
+			contactOverview: ''
 		}
 	}
 }

@@ -2,8 +2,6 @@
 	import { onMount } from 'svelte'
 	import { theme } from '$lib/stores/theme'
 	import { section, sectionTitle, sectionContent } from '$lib/styles/layout.css'
-	import { postDate } from '$lib/components/blog/PostCard.css'
-	import AuthorCard from '$lib/components/author/AuthorCard.svelte'
 	import type { PageData } from './$types'
 	import hljs from 'highlight.js/lib/core'
 	import javascript from 'highlight.js/lib/languages/javascript'
@@ -28,8 +26,7 @@
 
 	export let data: PageData
 
-	$: post = data.post
-	$: htmlContent = post.contentHtml || ''
+	$: note = data.note
 	$: highlightTheme = $theme === 'light' ? 'a11y-light' : 'a11y-dark'
 
 	onMount(() => {
@@ -41,16 +38,46 @@
 </script>
 
 <svelte:head>
-	<title>{post.title} - Tyler King</title>
+	<title>{note.title} - Tyler King</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/{highlightTheme}.min.css">
 </svelte:head>
 
 <article class={section}>
-	<time class={postDate}>{post.date}</time>
-	<h1 class={sectionTitle}>{post.title}</h1>
+	<h1 class={sectionTitle}>{note.title}</h1>
 	<div class={sectionContent}>
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		{@html htmlContent}
+		{@html note.overviewHtml}
 	</div>
-	<AuthorCard />
+	<div class={sectionContent}>
+		<h2>Why</h2>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		{@html note.whyHtml}
+	</div>
+	<div class={sectionContent}>
+		<h2>When</h2>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		{@html note.whenHtml}
+	</div>
+	<div class={sectionContent}>
+		<h2>Example</h2>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		{@html note.exampleHtml}
+		{#if note.codepenUrl}
+			<div style="margin-top: 1.5rem;">
+				<iframe
+					title="CodePen Embed"
+					src={`${note.codepenUrl.replace('/pen/', '/embed/')}?default-tab=result`}
+					loading="lazy"
+					allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi; clipboard-read; clipboard-write"
+					sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts"
+					style="width: 100%; height: 420px; border: 0; border-radius: 8px;"
+				></iframe>
+			</div>
+		{/if}
+	</div>
+	<div class={sectionContent}>
+		<h2>Trade-offs</h2>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		{@html note.tradeOffsHtml}
+	</div>
 </article>

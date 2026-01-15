@@ -2,6 +2,8 @@
 	import { section, sectionTitle, sectionContent, sectionIntro } from '$lib/styles/layout.css'
 	import ProjectCard from '$lib/components/project/ProjectCard.svelte'
 	import CaseStudyCard from '$lib/components/case-study/CaseStudyCard.svelte'
+	import NoteCard from '$lib/components/field-notes/NoteCard.svelte'
+	import { noteGrid } from '$lib/components/field-notes/NoteCard.css'
 	import ContactForm from '$lib/components/forms/ContactForm.svelte'
 	import type { PageData } from './$types'
 
@@ -9,8 +11,10 @@
 
 	$: projects = data.projects
 	$: caseStudies = data.caseStudies
+	$: notes = data.notes
 	$: about = data.about
 	$: approach = data.approach
+	$: global = data.global
 </script>
 
 <section id='profile' class={section}>
@@ -43,9 +47,26 @@
 	</div>
 </section>
 
+<section id='field-notes' class={section}>
+	<h2 class={sectionTitle}>Field Notes</h2>
+	<div class={sectionContent}>
+		{#if global?.fieldNotesOverview}
+			<p class={sectionIntro}>{global.fieldNotesOverview}</p>
+		{/if}
+		<div class={noteGrid}>
+			{#each notes as note}
+				<NoteCard {note} />
+			{/each}
+		</div>
+	</div>
+</section>
+
 <section id='case-studies' class={section}>
 	<h2 class={sectionTitle}>Case Studies</h2>
 	<div class={sectionContent}>
+		{#if global?.caseStudiesOverview}
+			<p class={sectionIntro}>{global.caseStudiesOverview}</p>
+		{/if}
 		{#each caseStudies as caseStudy}
 			<CaseStudyCard {caseStudy} />
 		{/each}
@@ -55,6 +76,9 @@
 <section id='projects' class={section}>
 	<h2 class={sectionTitle}>Open Source</h2>
 	<div class={sectionContent}>
+		{#if global?.projectsOverview}
+			<p class={sectionIntro}>{global.projectsOverview}</p>
+		{/if}
 		{#each projects as project}
 			<ProjectCard {project} />
 		{/each}
@@ -64,7 +88,9 @@
 <section id='contact' class={section}>
 	<h2 class={sectionTitle}>Contact</h2>
 	<div class={sectionContent}>
-		<p class={sectionIntro}>I'm open to full-time roles, contract work, and consulting opportunities.</p>
+		{#if global?.contactOverview}
+			<p class={sectionIntro}>{global.contactOverview}</p>
+		{/if}
 		<ContactForm />
 	</div>
 </section>

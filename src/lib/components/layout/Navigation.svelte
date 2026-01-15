@@ -8,6 +8,7 @@
 	const navItems = [
 		{ id: 'profile', icon: 'iconoir-user', label: 'About Me' },
 		{ id: 'approach', icon: 'iconoir-compass', label: 'My Approach' },
+		{ id: 'field-notes', icon: 'iconoir-book', label: 'Field Notes' },
 		{ id: 'case-studies', icon: 'iconoir-suitcase', label: 'Case Studies' },
 		{ id: 'projects', icon: 'iconoir-code', label: 'Open Source' },
 		{ id: 'contact', icon: 'iconoir-mail', label: 'Contact' }
