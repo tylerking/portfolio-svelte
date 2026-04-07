@@ -54,7 +54,7 @@ function portableTextToPlainText(portableText: PortableTextBlock[] | null | unde
 export async function getProjects(): Promise<Project[]> {
 	try {
 		// GROQ query to fetch all projects with technology references
-		const query = `*[_type == "project"] | order(order desc) {
+		const query = `*[_type == "project"] | order(order asc) {
 			_id,
 			title,
 			description,
